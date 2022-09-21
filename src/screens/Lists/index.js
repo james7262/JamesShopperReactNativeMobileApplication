@@ -8,22 +8,7 @@ const ListsScreen = props => {
 
   const navigation = useNavigation();
 
-  const [lists, setLists] = useState(
-    [
-      {
-        id: 1,
-        name: 'Grocery List',
-        store: 'Redners',
-        date: '2022-09-14',
-      },
-      {
-        id: 2,
-        name: 'Back to School List',
-        store: 'Staples',
-        date: '2022-09-15',
-      },
-    ]
-  );
+  const [lists, setLists] = useState([]);
 
   return (
     <View style={styles.container}>

@@ -23,7 +23,7 @@ const AddList = props => {
             return;
         }
         if (!date){
-            alert('Please enter a date in format YYYY-MM-DD.');
+            alert('Please enter a date in the format YYYY-MM-DD.');
             return;
         }
         try {
