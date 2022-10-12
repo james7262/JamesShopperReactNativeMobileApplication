@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, TextInput, View, Pressable} from 'react-native';
+import {Text, TextInput, View, Pressable, Alert} from 'react-native';
 import styles from './styles';
 import { openDatabase } from "react-native-sqlite-storage";
 import { useNavigation } from '@react-navigation/native';
@@ -33,7 +33,7 @@ const ExistingListScreen = props => {
 
         shopperDB.transaction(txn => {
             txn.executeSql(
-                `UPDATE ${listsTableName} SET name = '${name}', store = '${store}', date = '${date} WHERE id = ${post.id}`,
+                `UPDATE ${listsTableName} SET name = '${name}', store = '${store}', date = '${date}' WHERE id = ${post.id}`,
                 [],
                 () => {
                     console.log(`${name} updated successfully`);
@@ -49,11 +49,41 @@ const ExistingListScreen = props => {
     }
 
     const onListDelete = () => {
-
+        return Alert.alert(
+            // Title.
+            'Confirm',
+            // Message.
+            'Are you sure you want to delete this list?',
+            // Buttons.
+            [
+                {
+                    text: 'Yes',
+                    onPress: () => {
+                        shopperDB.transaction(txn => {
+                            txn.executeSql(
+                                `DELETE FROM ${listsTableName} WHERE id = ${post.id}`,
+                                [],
+                                () => {
+                                    console.log(`${name} deleted successfully`);
+                                },
+                                error => {
+                                    console.log('Error on deleting list' + error.message);
+                                }
+                            );
+                        });
+                        alert('List deleted!');
+                        navigation.navigate('Start Shopping!');
+                    },
+                },
+                {
+                    text: 'No',
+                },
+            ],
+        );
     }
 
     const onAddItem = () => {
-
+        
     }
 
     const onViewList = () => {
