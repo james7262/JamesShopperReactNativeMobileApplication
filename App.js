@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import 'react-native-gesture-handler';
 import React from 'react';
 import type {Node} from 'react';
@@ -19,6 +11,13 @@ const App: () => Node = () => {
   } catch (error) {
     console.log('Failed to create lists table ' + error);
   }
+
+  try {
+    database.createItemsTable();
+  } catch (error) {
+    console.log('Failed to create items table ' + error);
+  }
+  
   return <Router />;
 };
 
