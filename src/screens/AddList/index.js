@@ -5,7 +5,7 @@ import styles from './styles';
 
 const database = require('../../components/Handlers/database.js');
 
-const AddList = props => {
+const AddListScreen = props => {
 
     const navigation = useNavigation();
 
@@ -72,4 +72,4 @@ const AddList = props => {
   );
 };
 
-export default AddList;
+export default AddListScreen;
