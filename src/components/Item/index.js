@@ -1,11 +1,15 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 const Item = props => {
+
     const post = props.post;
+    const navigation = useNavigation();
+
     const onPress = () => {
-        console.log(post.name);
+        navigation.navigate('Existing Item', {post: post});
     }
 
   return (

@@ -8,6 +8,7 @@ const database = require('../../components/Handlers/database.js');
 const AddItemScreen = props => {
 
     const navigation = useNavigation();
+
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -31,7 +32,7 @@ const AddItemScreen = props => {
             console.log('Error adding item' + error);
         }
         alert(name + ' Added!');
-        navigation.navigate('Add Item!');
+        navigation.navigate('Add Item');
     }
 
   return (
@@ -46,7 +47,7 @@ const AddItemScreen = props => {
                 placeholderTextColor={'grey'}
             />
             <TextInput 
-                value={store}
+                value={price}
                 onChangeText={value => setPrice(value)}
                 style={styles.price}
                 clearButtonMode={'while-editing'}
@@ -54,7 +55,7 @@ const AddItemScreen = props => {
                 placeholderTextColor={'grey'}
             />
             <TextInput 
-                value={date}
+                value={quantity}
                 onChangeText={value => setQuantity(value)}
                 style={styles.quantity}
                 clearButtonMode={'while-editing'}

@@ -9,7 +9,7 @@ const List = props => {
     const navigation = useNavigation();
 
     const onPress = () => {
-        navigation.navigate('Existing List',{post: post});
+        navigation.navigate('Existing List', {post: post});
     }
 
   return (

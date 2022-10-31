@@ -5,6 +5,7 @@ import { openDatabase } from "react-native-sqlite-storage";
 const shopperDB = openDatabase({name: 'Shopper.db'});
 const listsTableName = 'lists';
 const itemsTableName = 'items';
+const listItemsTableName = 'list_items';
 
 module.exports = {
     // Declare function that will create the lists table.
@@ -52,6 +53,7 @@ module.exports = {
         });
     },
 
+    // Function that will create the items table.
     createItemsTable: async function() {
         (await shopperDB).transaction(txn => {
             txn.executeSql(
@@ -72,6 +74,7 @@ module.exports = {
         });
     }, 
     
+    // Function that adds items into the items table.
     addItem: async function (name, price, quantity) {
         (await shopperDB).transaction(txn => {
             txn.executeSql(
@@ -82,6 +85,42 @@ module.exports = {
                 },
                 error => {
                     console.log('Error adding item ' + error.message);
+                },
+            );
+        });
+    },
+
+    // Function that creates list items table.
+    createListItemsTable: async function() {
+        (await shopperDB).transaction(txn => {
+            txn.executeSql(
+                `CREATE TABLE IF NOT EXISTS ${listItemsTableName}(
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    list_id integer,
+                    item_id integer
+                );`,
+                [],
+                () => {
+                    console.log('List items table created successfully');
+                },
+                error => {
+                    console.log('Error creating list items table ' + error.message);
+                },
+            );
+        });
+    },
+    
+    // Function that adds list items into the list items table.
+    addListItem: async function (list_id, item_id) {
+        (await shopperDB).transaction(txn => {
+            txn.executeSql(
+                `INSERT INTO ${listItemsTableName} (list_id, item_id) VALUES (${list_id}, ${item_id})`,
+                [],
+                () => {
+                    console.log("List item added successfully");
+                },
+                error => {
+                    console.log('Error adding list item ' + error.message);
                 },
             );
         });
