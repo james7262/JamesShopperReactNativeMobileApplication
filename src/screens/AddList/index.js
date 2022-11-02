@@ -32,7 +32,7 @@ const AddListScreen = props => {
             console.log('Error adding list' + error);
         }
         alert(name + ' Added!');
-        navigation.navigate('Start Shopping!');
+        navigation.navigate('Add List');
     }
 
   return (
