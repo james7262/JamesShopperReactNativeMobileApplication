@@ -34,6 +34,46 @@ const ItemsScreen = props => {
                 });
               }
               setItems(results);
+              /*
+              [
+                {
+                  id: 1
+                  name: Milk
+                  price: 4.99
+                  quantity: 1
+                },
+                {
+                  id: 2
+                  name: Bread
+                  price: 2.99
+                  quantity: 2
+                },
+                {
+                  id: 3
+                  name: Dog Food
+                  price: 22.99
+                  quantity: 1
+                },
+                {
+                  id: 4
+                  name: Fish Food
+                  price: 7.99
+                  quantity: 1
+                },
+                {
+                  id: 5
+                  name: Pencils
+                  price: 6.55
+                  quantity: 1
+                },
+                {
+                  id: 6
+                  name: Water Bottle
+                  price: 12.99
+                  quantity: 1
+                }
+              ]
+              */
             } else {
               setItems([]);
             }
