@@ -12,7 +12,7 @@ const HomeScreen = () => {
       <SafeAreaView style={{flex: 0.0}} />
       <View style={styles.header}>
         <Text style={styles.title}>
-          Welcome to Shopper
+          Welcome to Shopper!
           <Text style={styles.description}>
             {'\n' + '\n'}Shopper is a cross platform mobile application built
             using React Native.
