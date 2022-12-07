@@ -5,9 +5,10 @@ import Router from './src/navigation/Router';
 /* bcrypt is a secure way to save passwords in a database, its algorithms encrypt a password
 into a long string of characters, called a hash, that is almost impossible to decrypt.
 It makes a database more secure - if someone hacks into it, they won't be able to steal
-the user's passwords. */
-import bcrypt from 'react-native-bcrypt';
+the user's passwords.
+import bcrypt from 'react-native-bcrypt'; */
 import { openDatabase } from "react-native-sqlite-storage";
+import { LogBox } from 'react-native';
 
 const database = require('./src/components/Handlers/database.js');
 
@@ -16,8 +17,8 @@ const usersTableName = 'users';
 
 /* Create a salt that will be used by bcrypt when creating the hash.
 A salt is a random value that will be appended to the password before
-it is encrypted to make it more secure. */
-let salt = bcrypt.genSaltSync(10);
+it is encrypted to make it more secure. 
+let salt = bcrypt.genSaltSync(10); */
 
 const App: () => Node = () => {
   try {
@@ -44,15 +45,16 @@ const App: () => Node = () => {
     console.log('Failed to create users table ' + error);
   }
 
-  try {
+  /* try {
     // Create the hash using bcrypt.
     let hash = bcrypt.hashSync('Ginger001!', salt);
-    //database.addUser('bachrachj', hash);
+    database.addUser('bachrachj', hash);
   } catch (error) {
     console.log('Failed to create user ' + error);
-  }
+  } */
   
   return <Router />;
 };
 
+LogBox.ignoreLogs(['Math.random']);
 export default App;
